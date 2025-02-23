@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YTMP3 Downloader</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        body {
+            background: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .button, .input {
+            width: 600px;
+            padding: 10px;
+            border: 2px solid #ffffff;
+            border-radius: 10px;
+            margin: 10px;
+            text-align: center;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+        }
+        .button:hover, .input:hover {
+            box-shadow: 0 0 10px #ffffff;
+        }
+        h1 {
+            color: white;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YTMP3 Downloader</h1>
+        <input type="text" id="youtubeLink" class="input" placeholder="Paste YouTube link here">
+        <button id="downloadBtn" class="button">Download MP3</button>
+    </div>
+
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const youtubeLink = document.getElementById('youtubeLink').value;
+            if (youtubeLink) {
+                const serviceUrl = `https://your-backend-service/convert?url=${encodeURIComponent(youtubeLink)}`;
+                window.location.href = serviceUrl;
+            } else {
+                alert('Please enter a valid YouTube link.');
+            }
+        });
+    </script>
+</body>
+</html>
