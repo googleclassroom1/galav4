@@ -51,8 +51,25 @@
         document.getElementById('downloadBtn').addEventListener('click', function() {
             const youtubeLink = document.getElementById('youtubeLink').value;
             if (youtubeLink) {
-                const serviceUrl = `https://your-backend-service/convert?url=${encodeURIComponent(youtubeLink)}`;
-                window.location.href = serviceUrl;
+                fetch(`https://ytjar-youtube-mp36.p.rapidapi.com/ytmp3?url=${encodeURIComponent(youtubeLink)}`, {
+                    "method": "GET",
+                    "headers": {
+                        "x-rapidapi-host": "ytjar-youtube-mp36.p.rapidapi.com",
+                        "x-rapidapi-key": "651155ae7cmsh52dfc88923e0c12p198246jsn9efd8054ce2f"  // Replace with your RapidAPI key
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.download_url) {
+                        window.location.href = data.download_url;
+                    } else {
+                        alert('Failed to convert video.');
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert('Error converting video.');
+                });
             } else {
                 alert('Please enter a valid YouTube link.');
             }
