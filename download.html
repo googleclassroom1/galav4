@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Classroom</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        body {
+            background: url('/bg.png') no-repeat center center fixed;
+            background-size: cover;
+            color:rgb(0, 0, 0);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap; /* This line makes the buttons wrap to a new line */
+            padding: 20px;
+        }
+        .button {
+            width: 150px;
+            height: 100px;
+            border: 2px solid #ffffff;
+            border-radius: 10px;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 16px;
+            background: none;
+            text-decoration: none;
+            color: #ffffff;
+            transition: box-shadow 0.3s;
+        }
+        .button:hover {
+            box-shadow: 0 0 10px #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2Fgoogleclassroom1%2Fproxy%2Ftree%2Fmain%2F" class="button">Download</a>
+        <a href="tutorial.html" class="button">Tutorial</a>
+    </div>
 
+    <script>
+        document.getElementById('about-blank-button').addEventListener('click', function() {
+            var url = window.location.href;
+            var win;
+
+            if (win) {
+                win.focus();
+            } else {
+                win = window.open();
+                win.document.body.style.margin = '0';
+                var originalTitle = document.title;
+                var faviconElement = document.querySelector('link[rel="icon"]');
+                var faviconURL = faviconElement ? faviconElement.href : '';
+                win.document.title = originalTitle;
+                if (faviconURL) {
+                    var favicon = win.document.createElement('link');
+                    favicon.rel = 'icon';
+                    favicon.href = faviconURL;
+                    win.document.head.appendChild(favicon);
+                }
+                var iframe = win.document.createElement('iframe');
+                iframe.style.border = 'none';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.margin = '0';
+                iframe.style.overflow = 'hidden';
+                iframe.src = url;
+                win.document.body.appendChild(iframe);
+                window.location.replace("https://Death.com  ");
+
+                var interval = setInterval(function() {
+                    if (win.closed) {
+                        clearInterval(interval);
+                        win = undefined;
+                    }
+                }, 500);
+            }
+            this.textContent = "About:blank";
+        });
+    </script>
+</body>
+</html>
