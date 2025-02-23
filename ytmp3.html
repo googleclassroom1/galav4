@@ -52,6 +52,10 @@
             const youtubeLink = document.getElementById('youtubeLink').value;
             if (youtubeLink) {
                 const videoId = youtubeLink.split('v=')[1];
+                if (!videoId) {
+                    alert('Invalid YouTube link.');
+                    return;
+                }
                 const apiUrl = `https://youtube-mp36.p.rapidapi.com/dl?id=${videoId}`;
 
                 fetch(apiUrl, {
@@ -63,20 +67,11 @@
                 })
                 .then(response => response.json())
                 .then(data => {
+                    console.log(data);  // Log the response for debugging
                     if (data && data.link) {
                         window.location.href = data.link;
                     } else {
-                        alert('Failed to convert video.');
+                        alert('It Failed UwU');
                     }
                 })
-                .catch(err => {
-                    console.error(err);
-                    alert('Error converting video.');
-                });
-            } else {
-                alert('Please enter a valid YouTube link.');
-            }
-        });
-    </script>
-</body>
-</html>
+                .catch 
